@@ -1,41 +1,75 @@
 ---
 name: ma-review
 description: >
-  既存UIの総合監査を行い、統一されたレポートを生成する。すべてのmaサブスキルを
-  順に実行して高さ・中・低の重大度で問題をランク付けし、SHIP/REVISE の判定を出す。
-  "このUI確認して" "レビューして" "問題ないか見て" "品質チェックして"
-  "ハンドオフ前に確認したい" "何か改善点ある？" と言われたらこのスキルを使うこと。
-  単一の問題（読みにくい・ボタンが分かりにくい等）には対応するサブスキルを直接使う。
-license: Complete terms in LICENSE.txt
+  完成したUIや既存画面を総合監査し、`ma-system` `ma-legibility` `ma-mapping`
+  `ma-flow` `ma-reduction` の5軸で所見をまとめ、SHIP / SHIP WITH NOTES / REVISE を判定する。
+  Use when ユーザーが「このUIをレビューして」「品質チェックして」「出荷前に監査して」
+  「high / mid / low で問題を出して」「ハンドオフ前に確認したい」「改善優先度をつけて」
+  と頼んだときに使うこと。単一論点だけの依頼には使わず、対応する ma-* サブスキルへ寄せること。
+license: MIT
+metadata:
+  author: yyyyyyy0
+  version: 1.1.0
+  tags:
+    - ui-review
+    - audit
+    - design-qa
+    - ma
 ---
 
-`ma` のサブスキル。`ma` の哲学を継承: 情報の明瞭性と目的ある装飾。
+`ma-review` は `ma` の総合監査役である。
+レビューとは、UI と哲学の構造化された対話であり、見た目の感想ではなく原則違反の記録である。
 
-## Core Principle
+## When to Use
 
-**レビューとはUIと哲学の構造化された対話だ。**
-各サブスキルはひとつの問いを立てる。このスキルはそのすべてを一緒に問う。
-出力は、インターフェースが何を伝え——何を伝えられていないかの追跡可能な記録だ。
+- 完成UIを出荷前に監査したいとき
+- 問題を severity 付きで整理したいとき
+- handoff 前にレビュー結果を残したいとき
+- 単なる感想ではなく、構造化された QA レポートが必要なとき
 
----
+## Do Not Use
+
+- 可読性だけを点検したいとき。`ma-legibility` を使う
+- 作用対象の曖昧さだけを点検したいとき。`ma-mapping` を使う
+- レイアウトの流れだけを点検したいとき。`ma-flow` を使う
+- 不要要素の削減だけを点検したいとき。`ma-reduction` を使う
+- 一貫性や token drift だけを点検したいとき。`ma-system` を使う
+
+## Workflow
+
+1. `ma-system` を実行する
+2. `ma-legibility` を実行する
+3. `ma-mapping` を実行する
+4. `ma-flow` を実行する
+5. `ma-reduction` を実行する
+6. 問題がない軸も `No violations found.` を明示して残す
+7. 新しいカテゴリを勝手に足さず、5軸の結果だけを集約する
+8. verdict は件数ではなく最大 severity で決める
+
+### 実行ルール
+
+- サブスキルを飛ばしてはならない
+- 「見た目がいい」は所見として無効
+- 所見は必ず、どの原則に違反しているかを書く
+- Priority actions は、抽象論ではなく実行可能な修正案にする
 
 ## Protocol
 
-各サブスキルを順番に実行する。各スキルについて、標準のOutput Formatで所見を出す。
-「おそらく問題ない」という理由でサブスキルをスキップしてはならない——所見がないこと自体が所見だ。
+各サブスキルについて、標準の Output Format で所見を出す。
+「問題なし」も所見であるため、省略しない。
 
 実行順:
-1. `ma-system` — デザインシステムは一貫しているか？
-2. `ma-legibility` — テキストは読みやすく、具体的で、アクセシブルか？
-3. `ma-mapping` — コントロールはそのターゲットに明確に対応しているか？
-4. `ma-flow` — 視線のパスは論理的な順序と一致しているか？
-5. `ma-reduction` — 意味を失わずに除去できるものは何か？
-
----
+1. `ma-system`
+2. `ma-legibility`
+3. `ma-mapping`
+4. `ma-flow`
+5. `ma-reduction`
 
 ## Output Format
 
-```
+`assets/report-template.md` の骨子に従い、次の構造を維持すること。
+
+```markdown
 # ma-review — [コンポーネントまたは画面名]
 
 ---
@@ -69,24 +103,66 @@ Priority actions:
 Verdict: [SHIP / SHIP WITH NOTES / REVISE]
 ```
 
-**Verdict 基準:**
-- **SHIP**: high重大度の問題なし、mid/low も軽微
-- **SHIP WITH NOTES**: high重大度の問題なし；mid/lowは次イテレーションのために文書化
-- **REVISE**: 1つ以上のhigh重大度の問題があり、shipの前に解決が必要
+## Verdict Rules
 
-**REVISE が出たとき**: Priority actionsの修正を適用してから、更新されたコンポーネントに対して再度 ma-review を実行することを提案する。
+- `SHIP`: high がなく、mid / low も軽微
+- `SHIP WITH NOTES`: high はないが、次イテレーションで拾うべき mid / low がある
+- `REVISE`: high が1件でもある
 
----
+件数で薄めてはならない。
+high が1件なら、それだけで `REVISE` である。
 
 ## Constraints
 
-- すべての所見は、何が見た目として悪いかではなく、どの原則が違反されたかを引用しなければならない。
-- 判定は数ではなく重大度によって決まる。
-  1つのhigh重大度の問題 = 何個のlow問題があっても REVISE。
-- "見た目は良い" は有効な所見ではない。サブスキルが何も見つけなければ、明示的にそう述べる。
-- Priority actionsは具体的かつ実行可能でなければならない。一般的なアドバイスは不可。
+- すべての所見は、原則違反に紐づいていなければならない
+- Severity は感情ではなく、理解または操作への影響で決める
+- Summary で新しい論点カテゴリを作らない
+- Priority actions は、誰かがそのまま直せる粒度にする
 
----
+## Worked Examples
 
-哲学が審判。Negative Listは判例集。
+**Worked example 1: SHIP WITH NOTES**
+
+状況:
+- 主要CTAは明確
+- 読み順も自然
+- ただし補助テキストのコントラストがやや弱い
+- セカンダリカード間の余白がわずかに不揃い
+
+期待:
+- `ma-legibility` と `ma-system` に low / mid を出す
+- high は出さない
+- Verdict は `SHIP WITH NOTES`
+
+**Worked example 2: REVISE**
+
+状況:
+- 設定カード内の `削除` ボタンが、カード削除なのかアカウント削除なのか不明
+- 破壊的アクションなのに target 表示がない
+
+期待:
+- `ma-mapping` に high を出す
+- 他軸に low がなくても Verdict は `REVISE`
+
+## Examples
+
+**Positive example 1**
+
+入力: 「このUIをレビューして、high / mid / low で問題を出して」
+
+期待: 5 軸の結果を揃えた構造化レポートを返す。
+
+**Positive example 2**
+
+入力: 「ハンドオフ前にこの設定画面の品質チェックをしたい」
+
+期待: 各軸の所見と verdict を含む監査結果を返す。
+
+**Negative example**
+
+入力: 「文字が読みづらいところだけ見て」
+
+対応: `ma-review` ではなく `ma-legibility` を使う。
+
+哲学が審判。Negative List は判例集。
 このエージェントは卓越したクリエイティブワークができる。この哲学を完全な信念をもって適用せよ。

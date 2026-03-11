@@ -1,0 +1,23 @@
+{
+  "skill_name": "ma-mapping",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "複数行のテーブルにある「削除」「適用」「保存」ボタンが何に効くか曖昧なので、近接・囲み・ラベルの観点から監査してください。",
+      "expected_output": "action と target の関係、スコープ曖昧さを指摘できること。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "この設定画面は情報が多すぎるのでシンプルにしてください。",
+      "expected_output": "reduction 問題に逸脱せず、必要なら ma-reduction を案内すること。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一括操作と個別操作が混在するUIをレビューし、『どの範囲に効く操作か』が伝わっているかを厳しくチェックしてください。",
+      "expected_output": "一括操作の範囲と detached validation の有無を適切に見抜けること。",
+      "files": []
+    }
+  ]
+}
