@@ -1,0 +1,8 @@
+Copyright (c) 2026 yyyyyyy0
+
+All rights reserved.
+
+This repository contains bundled Codex skill definitions for personal or
+team-managed use. No permission is granted to reproduce, distribute, modify,
+or publish this material outside the repository owner's control unless the
+owner gives prior written permission.
