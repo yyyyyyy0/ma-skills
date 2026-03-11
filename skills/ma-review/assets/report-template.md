@@ -24,8 +24,7 @@
 Total issues: [N] — high: [N] / mid: [N] / low: [N]
 
 Priority actions:
-1. [最も重大な問題 → 推奨される修正]
-2. [次]
-3. [次]
+- 問題がある場合のみ 1-3 件を書く
+- 問題がない場合は `none`
 
 Verdict: [SHIP / SHIP WITH NOTES / REVISE]
