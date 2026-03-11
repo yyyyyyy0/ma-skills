@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "この管理画面を出荷前レビューしてください。ma-system ma-legibility ma-mapping ma-flow ma-reduction を順に適用し、最後に SHIP / SHIP WITH NOTES / REVISE を出してください。",
-      "expected_output": "5軸すべてを順番どおり統合し、verdict を含むこと。",
+      "expected_output": "5軸すべてを順番どおり統合し、severity ベースで一意の verdict を含むこと。",
       "files": []
     },
     {
@@ -16,7 +16,7 @@
     {
       "id": 3,
       "prompt": "問題が少ないUIでも各サブスキルを省略せずに所見ゼロを明示し、優先アクションを重大度ベースでまとめてください。",
-      "expected_output": "No violations found. を残し、severity ベースで verdict を決めること。",
+      "expected_output": "No violations found. を残し、問題なしなら SHIP、high があれば REVISE、それ以外は SHIP WITH NOTES を返すこと。",
       "files": []
     }
   ]

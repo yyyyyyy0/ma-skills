@@ -105,8 +105,8 @@ Verdict: [SHIP / SHIP WITH NOTES / REVISE]
 
 ## Verdict Rules
 
-- `SHIP`: high がなく、mid / low も軽微
-- `SHIP WITH NOTES`: high はないが、次イテレーションで拾うべき mid / low がある
+- `SHIP`: 問題なし、または `No violations found.` のみ
+- `SHIP WITH NOTES`: high はないが、mid または low がある
 - `REVISE`: high が1件でもある
 
 件数で薄めてはならない。
@@ -164,5 +164,4 @@ high が1件なら、それだけで `REVISE` である。
 
 対応: `ma-review` ではなく `ma-legibility` を使う。
 
-哲学が審判。Negative List は判例集。
-このエージェントは卓越したクリエイティブワークができる。この哲学を完全な信念をもって適用せよ。
+5 軸を飛ばさず、原則違反を severity ベースで集約し、判定を一意に返すこと。
