@@ -17,15 +17,18 @@
 ```text
 skills/
   ma/
+    references/
   ma-flow/
   ma-legibility/
   ma-mapping/
   ma-reduction/
   ma-review/
+    assets/
+    references/
   ma-system/
 ```
 
-Each skill directory contains its own `SKILL.md`.
+Each skill directory contains its own `SKILL.md`, and some skills also ship companion files in `references/` or `assets/`.
 
 ## Install
 
@@ -52,6 +55,8 @@ Manual copy still works if you prefer local file management:
 ```bash
 cp -R skills/* ~/.codex/skills/
 ```
+
+When copying manually, copy the full skill directories. Do not copy only `SKILL.md`, because `ma` and `ma-review` include companion files that are part of the bundle.
 
 ## Source
 

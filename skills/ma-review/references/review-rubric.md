@@ -26,8 +26,8 @@
 ## Verdict ルール
 
 - high が 1 件でもあれば `REVISE`
-- high がなく、mid / low のみなら `SHIP WITH NOTES`
-- high がなく、mid も実質的にない場合は `SHIP`
+- high がなく、mid または low があれば `SHIP WITH NOTES`
+- 問題なし、または `No violations found.` のみなら `SHIP`
 
 ## Priority actions の書き方
 
