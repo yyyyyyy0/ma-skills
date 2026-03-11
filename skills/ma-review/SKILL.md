@@ -55,7 +55,7 @@ metadata:
 
 ## Protocol
 
-各サブスキルについて、標準の Output Format で所見を出す。
+各サブスキルの標準 Output Format を内部で使って評価し、その結果を `ma-review` の単一テンプレートへ集約する。
 「問題なし」も所見であるため、省略しない。
 
 実行順:
@@ -67,41 +67,8 @@ metadata:
 
 ## Output Format
 
-`assets/report-template.md` の骨子に従い、次の構造を維持すること。
-
-```markdown
-# ma-review — [コンポーネントまたは画面名]
-
----
-
-## 1. System (ma-system)
-[所見テーブル または "No violations found."]
-
-## 2. Legibility (ma-legibility)
-[所見テーブル または "No violations found."]
-
-## 3. Mapping (ma-mapping)
-[所見テーブル または "No violations found."]
-
-## 4. Flow (ma-flow)
-[所見テーブル または "No violations found."]
-
-## 5. Reduction (ma-reduction)
-[所見テーブル または "No violations found."]
-
----
-
-## Summary
-
-Total issues: [N] — high: [N] / mid: [N] / low: [N]
-
-Priority actions:
-1. [最も重大な問題 → 推奨される修正]
-2. [次]
-3. [次]
-
-Verdict: [SHIP / SHIP WITH NOTES / REVISE]
-```
+`assets/report-template.md` の単一テンプレートへ集約して返すこと。
+軸ごとにサブスキルのネイティブ形式をそのまま貼り込むのではなく、各軸の所見を review 用の章に整形して載せること。
 
 ## Verdict Rules
 
@@ -119,9 +86,9 @@ high が1件なら、それだけで `REVISE` である。
 - Summary で新しい論点カテゴリを作らない
 - Priority actions は、誰かがそのまま直せる粒度にする
 
-## Worked Examples
+## Worked Example
 
-**Worked example 1: SHIP WITH NOTES**
+**SHIP WITH NOTES**
 
 状況:
 - 主要CTAは明確
@@ -133,16 +100,6 @@ high が1件なら、それだけで `REVISE` である。
 - `ma-legibility` と `ma-system` に low / mid を出す
 - high は出さない
 - Verdict は `SHIP WITH NOTES`
-
-**Worked example 2: REVISE**
-
-状況:
-- 設定カード内の `削除` ボタンが、カード削除なのかアカウント削除なのか不明
-- 破壊的アクションなのに target 表示がない
-
-期待:
-- `ma-mapping` に high を出す
-- 他軸に low がなくても Verdict は `REVISE`
 
 ## Examples
 

@@ -30,6 +30,8 @@ skills/
 
 Each skill directory contains its own `SKILL.md`, and some skills also ship companion files in `references/` or `assets/`.
 
+`ma` と `ma-review` は軽量な本文から companion files を参照する設計です。`ma-flow` などの単一論点 subskill は比較的 self-contained です。
+
 ## Install
 
 Recommended: install from GitHub with `npx skills`.
