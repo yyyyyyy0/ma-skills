@@ -29,7 +29,23 @@ Each skill directory contains its own `SKILL.md`.
 
 ## Install
 
-Copy the desired skill directories into your Codex skills directory:
+Recommended: install from GitHub with the Codex skill installer helper.
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo yyyyyyy0/ma-skills \
+  --path skills/ma skills/ma-flow skills/ma-legibility skills/ma-mapping \
+         skills/ma-reduction skills/ma-review skills/ma-system
+```
+
+You can also install by URL:
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --url https://github.com/yyyyyyy0/ma-skills/tree/main/skills/ma
+```
+
+Manual copy still works if you prefer local file management:
 
 ```bash
 cp -R skills/* ~/.codex/skills/
