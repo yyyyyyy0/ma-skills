@@ -29,7 +29,25 @@ Each skill directory contains its own `SKILL.md`.
 
 ## Install
 
-Copy the desired skill directories into your Codex skills directory:
+Recommended: install from GitHub with `npx skills`.
+
+```bash
+npx skills add yyyyyyy0/ma-skills -g -a codex --skill '*'
+```
+
+List available skills without installing:
+
+```bash
+npx skills add yyyyyyy0/ma-skills --list
+```
+
+You can still install a direct GitHub URL if you prefer:
+
+```bash
+npx skills add https://github.com/yyyyyyy0/ma-skills -g -a codex --skill '*'
+```
+
+Manual copy still works if you prefer local file management:
 
 ```bash
 cp -R skills/* ~/.codex/skills/
