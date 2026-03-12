@@ -4,20 +4,37 @@
     {
       "id": 1,
       "prompt": "この管理画面を出荷前レビューしてください。ma-system ma-legibility ma-mapping ma-flow ma-reduction を順に適用し、最後に SHIP / SHIP WITH NOTES / REVISE を出してください。",
-      "expected_output": "5軸すべてを順番どおり統合し、severity ベースで一意の verdict を含むこと。",
-      "files": []
+      "expected_output": "5軸すべてを順番どおり統合し、severity ベースで一意の verdict を含むこと。 Checklist: 主要CTAは維持 / 軽微なコントラストと spacing の問題だけを拾う / Verdict は SHIP WITH NOTES。",
+      "files": [
+        "fixtures/ship-with-notes/fixture.html",
+        "fixtures/ship-with-notes/notes.md"
+      ]
     },
     {
       "id": 2,
-      "prompt": "単に新しいUIを設計して実装してください。",
-      "expected_output": "レビュー専用スキルとして振る舞い、設計実装タスクへ逸脱しないこと。",
-      "files": []
+      "prompt": "この運用画面には high severity の問題がある想定で、ma-system ma-legibility ma-mapping ma-flow ma-reduction を順に適用し、最後に verdict を出してください。",
+      "expected_output": "レビュー専用スキルとして高 severity を見逃さず、設計実装タスクへ逸脱しないこと。 Checklist: high を 1 件以上出す / 最大 severity により Verdict は REVISE / 5軸を省略しない。",
+      "files": [
+        "fixtures/revise-high/fixture.html",
+        "fixtures/revise-high/notes.md"
+      ]
     },
     {
       "id": 3,
-      "prompt": "問題が少ないUIでも各サブスキルを省略せずに所見ゼロを明示し、優先アクションを重大度ベースでまとめてください。",
-      "expected_output": "No violations found. を残し、問題なしなら SHIP、high があれば REVISE、それ以外は SHIP WITH NOTES を返すこと。",
-      "files": []
+      "prompt": "この分析画面を 5 軸でレビューしつつ、5軸に自然に収まらない横断的な懸念があれば補助欄にも記録してください。",
+      "expected_output": "No violations found. を残しつつ、必要なら Other observed risks を補助欄として使うこと。 Checklist: 5軸外の懸念だけを補助欄に出す / verdict 集計には補助欄を使わない / 重複記録しない。",
+      "files": [
+        "fixtures/cross-cutting-risks/fixture.html",
+        "fixtures/cross-cutting-risks/notes.md"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "単に新しいUIを設計して実装してください。",
+      "expected_output": "レビュー専用スキルとして振る舞い、設計実装タスクへ逸脱しないこと。 Checklist: ma を使うべき依頼だと示す / 5軸レビューを捏造しない / review 専用スキルであることを保つ。",
+      "files": [
+        "fixtures/wrong-task/fixture.md"
+      ]
     }
   ]
 }
