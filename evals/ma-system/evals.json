@@ -4,8 +4,11 @@
     {
       "id": 1,
       "prompt": "同じ役割のコンポーネントなのに余白・色・角丸・状態表現が微妙に違う画面群を監査し、既存の正規値へ統合してください。",
-      "expected_output": "token drift、spacing scale 崩れ、state inconsistency を指摘できること。",
-      "files": []
+      "expected_output": "token drift、spacing scale 崩れ、state inconsistency を指摘できること。 Checklist: 既存トークンに寄せる / 新規値乱立を避ける / component role ごとの差分を指摘する。",
+      "files": [
+        "fixtures/token-drift/fixture.html",
+        "fixtures/token-drift/notes.md"
+      ]
     },
     {
       "id": 2,
@@ -16,8 +19,11 @@
     {
       "id": 3,
       "prompt": "デザインシステム未整備のUIから暗黙のルールを抽出し、マジックナンバーやローカルオーバーライドを指摘したうえで一貫した基準を示してください。",
-      "expected_output": "既存の正規値を見つけ、新規値乱立を避ける方針を示すこと。",
-      "files": []
+      "expected_output": "既存の正規値を見つけ、新規値乱立を避ける方針を示すこと。 Checklist: 暗黙の spacing scale を抽出する / 代表 token を提案する / 局所 override を減らす方向にまとめる。",
+      "files": [
+        "fixtures/implicit-rules/fixture.html",
+        "fixtures/implicit-rules/notes.md"
+      ]
     }
   ]
 }

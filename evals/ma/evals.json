@@ -4,20 +4,37 @@
     {
       "id": 1,
       "prompt": "新しいSaaSダッシュボードのトップ画面を「間」の哲学で設計して、情報の優先度に沿った階層と次に取るべき行動が自然に分かるUIにしてください。",
-      "expected_output": "目的、情報構造、主要状態、CTA優先順位、実装方針、デザイン根拠を一体で含む設計指示になること。",
-      "files": []
+      "expected_output": "目的、情報構造、主要状態、CTA優先順位、実装方針、デザイン根拠を一体で含む設計指示になること。 Checklist: hero KPI を先頭に置く / root-cause セクションと next action を分離する / CTA の優先順位を明示する。",
+      "files": [
+        "fixtures/dashboard-entry/fixture.md",
+        "fixtures/dashboard-entry/notes.md"
+      ]
     },
     {
       "id": 2,
       "prompt": "完成済みUIの品質チェックをして改善点を洗い出してください。",
-      "expected_output": "総合レビュー依頼は ma-review に寄せ、自分がレビュー主体になりすぎないこと。",
-      "files": []
+      "expected_output": "総合レビュー依頼は ma-review に寄せ、自分がレビュー主体になりすぎないこと。 Checklist: 自分で5軸レビューを始めない / ma-review に渡す理由を説明する / 設計スキルとしての守備範囲を守る。",
+      "files": [
+        "fixtures/review-handoff/fixture.md"
+      ]
     },
     {
       "id": 3,
-      "prompt": "この画面案について、各色・余白・強調・モーションが何を伝えているかを説明し、伝達理由のない装飾は削除したうえで実装方針を示してください。",
-      "expected_output": "視覚判断の理由だけで終わらず、同じ出力内に実装方針まで含まれること。",
-      "files": []
+      "prompt": "ブランドチームが求める鮮やかなヒーロー表現を保ちつつ、この画面案について各色・余白・強調・モーションが何を伝えているかを説明し、必要な例外だけ残したうえで実装方針を示してください。",
+      "expected_output": "視覚判断の理由だけで終わらず、同じ出力内に実装方針まで含まれること。 Checklist: 高リスク表現を全面否定しない / どの要素が例外採用かを明示する / ブランド制約と認知順序の両立を説明する。",
+      "files": [
+        "fixtures/semantic-ornament/fixture.html",
+        "fixtures/semantic-ornament/notes.md"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "このヒーロー案を、意味のない装飾に流されず『間』の哲学で整理し直し、必要な要素だけで成立する構成と実装方針を示してください。",
+      "expected_output": "装飾の批評だけで終わらず、要素の削減・優先順位・実装方針まで含めること。 Checklist: mood-only color や decorative hover を抑制する / 6つの必須セクションを落とさない / 何を削るかを明示する。",
+      "files": [
+        "fixtures/ornament-suppression/fixture.html",
+        "fixtures/ornament-suppression/notes.md"
+      ]
     }
   ]
 }

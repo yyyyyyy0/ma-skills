@@ -19,6 +19,16 @@
 
 ---
 
+## Other observed risks
+
+- 問題がない場合は `none`
+- 記録する場合は 0-3 件まで
+- 各項目に `Observation / Impact / Recommended owner-skill or follow-up` を含める
+- 5軸に記録済みの内容は重複記載しない
+- verdict 集計には含めない
+
+---
+
 ## Summary
 
 Total issues: [N] — high: [N] / mid: [N] / low: [N]

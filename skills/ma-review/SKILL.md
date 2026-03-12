@@ -43,7 +43,7 @@ metadata:
 4. `ma-flow` を実行する
 5. `ma-reduction` を実行する
 6. 問題がない軸も `No violations found.` を明示して残す
-7. 新しいカテゴリを勝手に足さず、5軸の結果だけを集約する
+7. 5軸に自然に主分類できない観測事項だけ `Other observed risks` に記録する
 8. verdict は件数ではなく最大 severity で決める
 
 ### 実行ルール
@@ -57,6 +57,8 @@ metadata:
 
 各サブスキルの標準 Output Format を内部で使って評価し、その結果を `ma-review` の単一テンプレートへ集約する。
 「問題なし」も所見であるため、省略しない。
+5軸が主判定であり、`Other observed risks` は補足記録である。
+補助欄は新しい正式カテゴリではなく、5軸に重複記録してはならない。
 
 実行順:
 1. `ma-system`
@@ -65,10 +67,18 @@ metadata:
 4. `ma-flow`
 5. `ma-reduction`
 
+`Other observed risks` に記録してよい代表例:
+- responsive breakage
+- localization expansion
+- perceived latency
+- chart / data-viz misread risk
+- motion timing
+
 ## Output Format
 
 `assets/report-template.md` の単一テンプレートへ集約して返すこと。
 軸ごとにサブスキルのネイティブ形式をそのまま貼り込むのではなく、各軸の所見を review 用の章に整形して載せること。
+`Other observed risks` は Summary 直前の補助欄としてのみ使い、verdict 集計の材料にしないこと。
 
 ## Verdict Rules
 
@@ -85,6 +95,9 @@ high が1件なら、それだけで `REVISE` である。
 - Severity は感情ではなく、理解または操作への影響で決める
 - Summary で新しい論点カテゴリを作らない
 - Priority actions は、誰かがそのまま直せる粒度にする
+- `Other observed risks` は 0-3 件までに制限する
+- `Other observed risks` の各項目には Observation / Impact / Recommended owner-skill or follow-up を含める
+- 5軸に記録済みの内容を `Other observed risks` に重複記載してはならない
 
 ## Worked Example
 
