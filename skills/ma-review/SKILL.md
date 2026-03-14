@@ -52,6 +52,7 @@ metadata:
 - 「見た目がいい」は所見として無効
 - 所見は必ず、どの原則に違反しているかを書く
 - Priority actions は、抽象論ではなく実行可能な修正案にする
+- 測定や実験が意味判断の代替として使われていないかを確認し、使われている場合は既存5軸の違反として記録する
 
 ## Protocol
 
@@ -66,6 +67,9 @@ metadata:
 3. `ma-mapping`
 4. `ma-flow`
 5. `ma-reduction`
+
+補助チェック:
+- metric や A/B テストが、意味・階層・mapping・一貫性をゼロから決める理由として使われていないか確認する
 
 `Other observed risks` に記録してよい代表例:
 - responsive breakage

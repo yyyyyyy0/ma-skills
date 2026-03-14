@@ -53,6 +53,8 @@ metadata:
 ### Semantic alignment
 - semantic mismatch がないか
 - 同じ意味の UI 要素が別の見た目や別タグになっていないか
+- 同じ spacing が同じ relationship を意味しているか
+- 意味の違うグループに同じ spacing を使って、関係を誤読させていないか
 - 理由のないローカルオーバーライドがないか
 
 ## Process
@@ -67,12 +69,14 @@ metadata:
 - 不一致を直すために新しい値を導入してはならない
 - 一貫性はローカルな好みより優先する
 - 同じ意味的役割に複数の視覚ルールを持たせない
+- equal spacing implies equal relationship を崩すなら、理由を説明できなければならない
 - なぜその値が正規値なのかを説明できなければならない
 
 ## Negative List
 
 - **token drift**: 同じ役割に別スケールの余白や色が混ざる
 - **spacing scale 崩れ**: 4px 系と 6px 系が理由なく混在する
+- **spacing semantics mismatch**: scale は揃っていても、意味の違う要素に同じ spacing を使って同格に見せてしまう
 - **state inconsistency**: hover / focus / disabled が部品ごとに違う
 - **semantic mismatch**: 見た目は同じなのに意味や role が違う
 - **理由のないローカルオーバーライド**: システム違反に説明がない
