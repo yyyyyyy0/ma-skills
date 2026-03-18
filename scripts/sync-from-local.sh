@@ -3,7 +3,6 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source_root="${MA_SKILLS_SOURCE_ROOT:-$HOME/.local/share/skills}"
 stage_root="$(mktemp -d)"
 
 skills=(
@@ -22,6 +21,29 @@ require_path() {
     echo "missing required path: $path" >&2
     exit 1
   fi
+}
+
+detect_source_root() {
+  local candidate
+  local candidates=(
+    "$HOME/.codex/skills"
+    "$HOME/.claude/skills"
+    "$HOME/.local/share/skills"
+  )
+
+  if [[ -n "${MA_SKILLS_SOURCE_ROOT:-}" ]]; then
+    printf '%s\n' "$MA_SKILLS_SOURCE_ROOT"
+    return 0
+  fi
+
+  for candidate in "${candidates[@]}"; do
+    if [[ -d "$candidate" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  printf '%s\n' "${candidates[0]}"
 }
 
 check_version() {
@@ -43,6 +65,8 @@ cleanup() {
 
 trap cleanup EXIT
 
+source_root="$(detect_source_root)"
+
 command -v rsync >/dev/null 2>&1 || {
   echo "rsync is required" >&2
   exit 1
@@ -51,6 +75,7 @@ command -v rsync >/dev/null 2>&1 || {
 mkdir -p "$stage_root/skills"
 
 echo "preflight checks:"
+echo "source root: $source_root"
 expected_version=""
 for skill in "${skills[@]}"; do
   require_path "$source_root/$skill"
