@@ -23,6 +23,16 @@ require_path() {
   fi
 }
 
+is_valid_source_root() {
+  local root="$1"
+
+  [[ -f "$root/ma/SKILL.md" ]] || return 1
+  [[ -f "$root/ma/references/examples.md" ]] || return 1
+  [[ -f "$root/ma-review/SKILL.md" ]] || return 1
+  [[ -f "$root/ma-review/assets/report-template.md" ]] || return 1
+  [[ -f "$root/ma-review/references/review-rubric.md" ]]
+}
+
 detect_source_root() {
   local candidate
   local candidates=(
@@ -37,7 +47,7 @@ detect_source_root() {
   fi
 
   for candidate in "${candidates[@]}"; do
-    if [[ -d "$candidate" ]]; then
+    if [[ -d "$candidate" ]] && is_valid_source_root "$candidate"; then
       printf '%s\n' "$candidate"
       return 0
     fi

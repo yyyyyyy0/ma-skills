@@ -78,7 +78,7 @@ This repository includes a helper script to rebuild the bundle from local source
 ./scripts/sync-from-local.sh
 ```
 
-The script reads source skills from `MA_SKILLS_SOURCE_ROOT`. If the variable is not set, it auto-detects common local skill directories such as `~/.codex/skills`, `~/.claude/skills`, and `~/.local/share/skills`.
+The script reads source skills from `MA_SKILLS_SOURCE_ROOT`. If the variable is not set, it auto-detects common local skill directories such as `~/.codex/skills`, `~/.claude/skills`, and `~/.local/share/skills`, but only selects roots that already contain the bundled `ma` skills.
 
 ```bash
 MA_SKILLS_SOURCE_ROOT=/path/to/local/skills ./scripts/sync-from-local.sh
@@ -93,7 +93,7 @@ The script copies the source skill directories, verifies required companion file
 
 ## Source
 
-This repository can be reproduced from local skill definitions stored under `MA_SKILLS_SOURCE_ROOT` or one of the auto-detected local skill directories, such as:
+This repository can be reproduced from local skill definitions stored under `MA_SKILLS_SOURCE_ROOT` or one of the auto-detected local skill directories that already contain the bundle, such as:
 
 - `/path/to/local/skills/ma`
 - `/path/to/local/skills/ma-*`
