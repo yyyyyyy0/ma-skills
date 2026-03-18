@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source_root="${MA_SKILLS_SOURCE_ROOT:-$HOME/.codex/skills}"
+source_root="${MA_SKILLS_SOURCE_ROOT:-$HOME/.local/share/skills}"
 stage_root="$(mktemp -d)"
 
 skills=(
