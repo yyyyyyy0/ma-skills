@@ -78,7 +78,7 @@ This repository includes a helper script to rebuild the bundle from local source
 ./scripts/sync-from-local.sh
 ```
 
-The script reads source skills from `MA_SKILLS_SOURCE_ROOT`. If the variable is not set, it auto-detects common local skill directories such as `~/.codex/skills`, `~/.claude/skills`, `~/.cursor/skills`, `~/.config/opencode/skills`, and `~/.local/share/skills`, but only selects roots that already contain the full bundled skill set.
+The script reads source skills from `MA_SKILLS_SOURCE_ROOT`. If the variable is not set, it auto-detects common local skill directories such as `~/.codex/skills`, `~/.claude/skills`, `~/.cursor/skills`, `~/.config/opencode/skills`, `~/.config/agents/skills`, and `~/.local/share/skills`, but only selects roots that already contain the full bundled skill set, including the `ma` companion references.
 
 If more than one valid bundle root is found, the script stops and asks you to set `MA_SKILLS_SOURCE_ROOT` explicitly.
 

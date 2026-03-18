@@ -18,6 +18,10 @@ skills=(
 required_source_paths=(
   "ma/SKILL.md"
   "ma/references/examples.md"
+  "ma/references/judgment.md"
+  "ma/references/contrast.md"
+  "ma/references/spacing.md"
+  "ma/references/patterns.md"
   "ma-review/SKILL.md"
   "ma-review/assets/report-template.md"
   "ma-review/references/review-rubric.md"
@@ -55,6 +59,7 @@ detect_source_root() {
     "$HOME/.claude/skills"
     "$HOME/.cursor/skills"
     "$HOME/.config/opencode/skills"
+    "$HOME/.config/agents/skills"
     "$HOME/.local/share/skills"
   )
 
