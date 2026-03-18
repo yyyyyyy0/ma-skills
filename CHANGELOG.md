@@ -6,7 +6,10 @@ The format is based on Keep a Changelog, and versions are intended to map to Git
 
 ## [Unreleased]
 
-- No unreleased changes yet.
+### Changed
+
+- Reframed the README to describe `ma-skills` as a general-purpose skill bundle instead of a Codex-specific bundle.
+- Generalized installation and maintenance documentation to use tool-agnostic skill directory examples and `MA_SKILLS_SOURCE_ROOT`.
 
 ## [1.1.0] - 2026-03-12
 
