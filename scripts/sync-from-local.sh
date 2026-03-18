@@ -15,6 +15,19 @@ skills=(
   "ma-reduction"
 )
 
+required_source_paths=(
+  "ma/SKILL.md"
+  "ma/references/examples.md"
+  "ma-review/SKILL.md"
+  "ma-review/assets/report-template.md"
+  "ma-review/references/review-rubric.md"
+  "ma-system/SKILL.md"
+  "ma-legibility/SKILL.md"
+  "ma-mapping/SKILL.md"
+  "ma-flow/SKILL.md"
+  "ma-reduction/SKILL.md"
+)
+
 require_path() {
   local path="$1"
   if [[ ! -e "$path" ]]; then
@@ -25,12 +38,13 @@ require_path() {
 
 is_valid_source_root() {
   local root="$1"
+  local path
 
-  [[ -f "$root/ma/SKILL.md" ]] || return 1
-  [[ -f "$root/ma/references/examples.md" ]] || return 1
-  [[ -f "$root/ma-review/SKILL.md" ]] || return 1
-  [[ -f "$root/ma-review/assets/report-template.md" ]] || return 1
-  [[ -f "$root/ma-review/references/review-rubric.md" ]]
+  for path in "${required_source_paths[@]}"; do
+    [[ -f "$root/$path" ]] || return 1
+  done
+
+  return 0
 }
 
 detect_source_root() {
