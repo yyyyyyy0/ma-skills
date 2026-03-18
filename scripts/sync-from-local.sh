@@ -49,9 +49,12 @@ is_valid_source_root() {
 
 detect_source_root() {
   local candidate
+  local valid_candidates=()
   local candidates=(
     "$HOME/.codex/skills"
     "$HOME/.claude/skills"
+    "$HOME/.cursor/skills"
+    "$HOME/.config/opencode/skills"
     "$HOME/.local/share/skills"
   )
 
@@ -62,10 +65,21 @@ detect_source_root() {
 
   for candidate in "${candidates[@]}"; do
     if [[ -d "$candidate" ]] && is_valid_source_root "$candidate"; then
-      printf '%s\n' "$candidate"
-      return 0
+      valid_candidates+=("$candidate")
     fi
   done
+
+  if [[ "${#valid_candidates[@]}" -eq 1 ]]; then
+    printf '%s\n' "${valid_candidates[0]}"
+    return 0
+  fi
+
+  if [[ "${#valid_candidates[@]}" -gt 1 ]]; then
+    echo "multiple valid source roots detected:" >&2
+    printf '  %s\n' "${valid_candidates[@]}" >&2
+    echo "set MA_SKILLS_SOURCE_ROOT to the bundle you want to sync from" >&2
+    return 1
+  fi
 
   printf '%s\n' "${candidates[0]}"
 }
