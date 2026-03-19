@@ -1,6 +1,6 @@
 # ma-skills
 
-`ma-skills` is a bundled repository for the `ma` Codex skill family used to design and review UI through the philosophy of "間".
+`ma-skills` is a reusable bundle of `ma` skills for designing and reviewing UI through the philosophy of "間".
 
 The bundle is versioned as a public package, not just a local snapshot. Use the repository changelog, Git tags, and GitHub Releases as the canonical references for what changed and which version to pin.
 
@@ -36,28 +36,29 @@ Each skill directory contains its own `SKILL.md`, and some skills also ship comp
 
 ## Install
 
-Recommended: install from GitHub with `npx skills`.
+The bundle can be installed with any skill manager or copied into a local skill directory.
+One example is installing from GitHub with `npx skills`:
 
 ```bash
-npx skills add yyyyyyy0/ma-skills -g -a codex --skill '*'
+npx skills add yyyyyyy0/ma-skills -g --skill '*'
 ```
 
-List available skills without installing:
+To inspect the bundle without installing:
 
 ```bash
 npx skills add yyyyyyy0/ma-skills --list
 ```
 
-You can still install a direct GitHub URL if you prefer:
+You can also install from a direct GitHub URL:
 
 ```bash
-npx skills add https://github.com/yyyyyyy0/ma-skills -g -a codex --skill '*'
+npx skills add https://github.com/yyyyyyy0/ma-skills -g --skill '*'
 ```
 
-Manual copy still works if you prefer local file management:
+Manual copy also works if you manage skills as local directories:
 
 ```bash
-cp -R skills/* ~/.codex/skills/
+cp -R skills/* /path/to/your/skills/
 ```
 
 When copying manually, copy the full skill directories. Do not copy only `SKILL.md`, because `ma` and `ma-review` include companion files that are part of the bundle.
@@ -77,6 +78,14 @@ This repository includes a helper script to rebuild the bundle from local source
 ./scripts/sync-from-local.sh
 ```
 
+The script reads source skills from `MA_SKILLS_SOURCE_ROOT`. If the variable is not set, it auto-detects common local skill directories such as `~/.codex/skills`, `~/.claude/skills`, `~/.cursor/skills`, `~/.config/opencode/skills`, `~/.config/agents/skills`, and `~/.local/share/skills`, but only selects roots that already contain the full bundled skill set, including the `ma` companion references.
+
+If more than one valid bundle root is found, the script stops and asks you to set `MA_SKILLS_SOURCE_ROOT` explicitly.
+
+```bash
+MA_SKILLS_SOURCE_ROOT=/path/to/local/skills ./scripts/sync-from-local.sh
+```
+
 The script copies the source skill directories, verifies required companion files, and reports metadata version drift across bundled skills. Recommended maintainer flow:
 
 1. Sync the bundle from local source skills.
@@ -86,12 +95,12 @@ The script copies the source skill directories, verifies required companion file
 
 ## Source
 
-This repository was assembled from the local skill definitions under:
+This repository can be reproduced from local skill definitions stored under `MA_SKILLS_SOURCE_ROOT` or one of the auto-detected local skill directories that already contain the full bundle, such as:
 
-- `~/.codex/skills/ma`
-- `~/.codex/skills/ma-*`
+- `/path/to/local/skills/ma`
+- `/path/to/local/skills/ma-*`
 
-The `scripts/sync-from-local.sh` helper keeps this repository reproducible when those local source skills change.
+The `scripts/sync-from-local.sh` helper keeps the bundle reproducible as those local source skills evolve.
 
 ## License
 
