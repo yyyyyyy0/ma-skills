@@ -22,6 +22,7 @@ required_source_paths=(
   "ma/references/contrast.md"
   "ma/references/spacing.md"
   "ma/references/patterns.md"
+  "ma/references/touch.md"
   "ma-review/SKILL.md"
   "ma-review/assets/report-template.md"
   "ma-review/references/review-rubric.md"
@@ -134,6 +135,7 @@ for skill in "${skills[@]}"; do
 done
 
 require_path "$source_root/ma/references/examples.md"
+require_path "$source_root/ma/references/touch.md"
 require_path "$source_root/ma-review/assets/report-template.md"
 require_path "$source_root/ma-review/references/review-rubric.md"
 
@@ -142,6 +144,7 @@ for skill in "${skills[@]}"; do
 done
 
 require_path "$stage_root/skills/ma/references/examples.md"
+require_path "$stage_root/skills/ma/references/touch.md"
 require_path "$stage_root/skills/ma-review/assets/report-template.md"
 require_path "$stage_root/skills/ma-review/references/review-rubric.md"
 
