@@ -21,6 +21,7 @@
 - リズムを破るなら、その破れ自体が境界、焦点、セクション転換、状態変化を伝えていなければならない
 - 大きな空白は hierarchy、pacing、focus、density reduction のいずれかを説明できなければならない
 - negative space は内容がない部分ではなく、内容の読み方を制御する要素として扱うこと
+- 値が数学的に等しくても知覚的に等しいとは限らない。補正の原則は `references/optical.md` を参照
 
 ### Negative List
 

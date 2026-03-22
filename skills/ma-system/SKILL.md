@@ -45,6 +45,7 @@ metadata:
 - spacing scale 崩れがあるか
 - 色や radius や typography が正規値から外れていないか
 - z-index やサイズがマジックナンバー化していないか
+- scale declaration があるか（base unit、token ladder、例外扱いの基準）
 
 ### State handling
 - hover / focus / active / disabled の state inconsistency がないか
@@ -80,6 +81,11 @@ metadata:
 - **state inconsistency**: hover / focus / disabled が部品ごとに違う
 - **semantic mismatch**: 見た目は同じなのに意味や role が違う
 - **理由のないローカルオーバーライド**: システム違反に説明がない
+- **undeclared scale**: spacing / typography / radius に使われている値の
+  導出元（base, steps, 例外ルール）が宣言されていない。
+  Step 1 の推論で監査は進行できるが、宣言がなければ
+  将来の drift 検出基準が属人的になる。
+  内部一貫性が高い場合は mid、値が散在している場合は high
 
 ## Output Format
 

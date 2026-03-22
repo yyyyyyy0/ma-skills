@@ -21,6 +21,7 @@
 - 実際の背景に対して測ること。gradient、translucent layer、blur は見かけの背景色を変える
 - opacity で文字色を作らないこと。`rgba()` の薄め方は知覚上の明度を安定して制御できない
 - 状態変化をコントラスト差だけに頼らないこと。構造、ラベル、タイポグラフィの変化も併用すること
+- letter-spacing の知覚補正については `references/optical.md` を参照
 
 ### What Good Looks Like
 
