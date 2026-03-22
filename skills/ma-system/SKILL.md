@@ -83,7 +83,9 @@ metadata:
 - **理由のないローカルオーバーライド**: システム違反に説明がない
 - **undeclared scale**: spacing / typography / radius に使われている値の
   導出元（base, steps, 例外ルール）が宣言されていない。
-  正規値が不明な状態では drift の検出も統合もできない
+  Step 1 の推論で監査は進行できるが、宣言がなければ
+  将来の drift 検出基準が属人的になる。
+  内部一貫性が高い場合は mid、値が散在している場合は high
 
 ## Output Format
 
