@@ -6,6 +6,11 @@ The format is based on Keep a Changelog, and versions are intended to map to Git
 
 ## [Unreleased]
 
+### Added
+
+- Output Tier scaling for `ma` skill: Full / Focused / Minimal tiers based on request scope (v1.2.0).
+- Evals for Focused Tier (eval 5), Minimal Tier (eval 6), and ambiguous Tier fallback (eval 7).
+
 ### Changed
 
 - Reframed the README to describe `ma-skills` as a general-purpose skill bundle instead of a Codex-specific bundle.
