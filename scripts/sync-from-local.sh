@@ -22,6 +22,7 @@ required_source_paths=(
   "ma/references/contrast.md"
   "ma/references/spacing.md"
   "ma/references/patterns.md"
+  "ma/references/growing.md"
   "ma-review/SKILL.md"
   "ma-review/assets/report-template.md"
   "ma-review/references/review-rubric.md"
