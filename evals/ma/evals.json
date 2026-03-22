@@ -35,6 +35,30 @@
         "fixtures/ornament-suppression/fixture.html",
         "fixtures/ornament-suppression/notes.md"
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "サイドバーのナビゲーションを見直して、プロジェクト単位とアカウント単位の操作が自然に区別できるようにしてください。",
+      "expected_output": "Focused Tier で返すこと。目的・実装上の構成案・デザイン根拠の3セクションのみ。情報構造・主要状態・CTA優先順位は含まないこと。 Checklist: Tier を Focused と判定する / 3セクションすべてを含む / Full Tier の余分なセクションを含まない。",
+      "files": [
+        "fixtures/focused-sidebar/fixture.md"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "このボタンの余白を見直して、周囲のフォーム要素との関係で適切なスペーシングにしてください。",
+      "expected_output": "Minimal Tier で返すこと。実装上の構成案とデザイン根拠の2セクション。目的・情報構造・主要状態・CTA優先順位は含まないこと。 Checklist: Tier を Minimal と判定する / 実装上の構成案を含む / デザイン根拠セクションを含む / spacing rationale を含む / 他4セクションを含まない。",
+      "files": [
+        "fixtures/minimal-button-spacing/fixture.md"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "このカードのレイアウトと中身を整理して、スキャンしやすくしてください。",
+      "expected_output": "Tier が曖昧な場合は一段上の Tier（Focused）を選択し、目的・実装上の構成案・デザイン根拠の3セクションを返すこと。 Checklist: 曖昧さを認識して Focused Tier を選ぶ / 3セクションすべてを含む / Minimal に落とさない。",
+      "files": [
+        "fixtures/ambiguous-card/fixture.md"
+      ]
     }
   ]
 }

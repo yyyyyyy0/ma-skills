@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.1.0
+  version: 1.2.0
   tags:
     - accessibility
     - readability
