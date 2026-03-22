@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.1.0
+  version: 1.2.0
   tags:
     - ui-design
     - implementation
@@ -147,7 +147,7 @@ Meaning is designed before it is measured.
 - コンポーネントまたはセクションの局所調整（情報構造の再設計を含まない） → **Focused**
 - 単一要素の調整 → **Minimal**
 - 曖昧な場合は一段上の Tier を選ぶ
-- 単一論点（余白のみ、コントラストのみ等）は Tier 判定の前に `ma-*` サブスキルへの委譲を検討すること
+- 単一論点（余白のみ、コントラストのみ等）は `ma-*` サブスキルでの監査も検討しつつ、`ma` で扱う場合は Minimal Tier で返す
 
 ### 全セクション一覧
 
@@ -185,7 +185,7 @@ Meaning is designed before it is measured.
 - 「このヒーロー案を整理し直して」→ Full（セクション単位だが情報構造・状態・CTAの再設計を含む）
 - 「サイドバーのナビゲーションを見直して」→ Focused（コンポーネント単位の局所調整）
 - 「このモーダルの確認ボタンの配置を変えたい」→ Minimal（単一要素の調整：実装構成案＋デザイン根拠）
-- 「このボタンの余白を見直して」→ `ma-system` へ委譲（単一論点の spacing 調整）
+- 「このボタンの余白を見直して」→ Minimal（単一要素の調整：実装構成案＋spacing rationale を含む）
 
 ## Example
 
