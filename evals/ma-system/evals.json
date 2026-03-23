@@ -24,6 +24,15 @@
         "fixtures/implicit-rules/fixture.html",
         "fixtures/implicit-rules/notes.md"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "このUIの余白・タイポグラフィ・角丸を監査してください。値は揃っているように見えますが、デザインシステムのドキュメントはありません。",
+      "expected_output": "token drift や spacing scale 崩れではなく、undeclared scale として分類すること。severity は内部一貫性に基づいて判定する（一貫性が高ければ mid、値が散在していれば high）。scale の base・steps・例外ルールが宣言されていないことを指摘し、宣言の欠如が将来の drift 検出基準を属人的にするリスクを説明すること。 Checklist: undeclared scale として finding を分類する / severity を内部一貫性に基づいて判定する / drift ではなく宣言の欠如が問題であることを明示する / 将来リスクを説明する。",
+      "files": [
+        "fixtures/undeclared-scale/fixture.html",
+        "fixtures/undeclared-scale/notes.md"
+      ]
     }
   ]
 }

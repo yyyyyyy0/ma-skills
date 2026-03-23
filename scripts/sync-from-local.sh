@@ -24,6 +24,7 @@ required_source_paths=(
   "ma/references/patterns.md"
   "ma/references/growing.md"
   "ma/references/touch.md"
+  "ma/references/optical.md"
   "ma-review/SKILL.md"
   "ma-review/assets/report-template.md"
   "ma-review/references/review-rubric.md"
@@ -135,9 +136,19 @@ for skill in "${skills[@]}"; do
   fi
 done
 
+# --- CHANGELOG version check (warning, not blocking) ---
+changelog_path="$repo_root/CHANGELOG.md"
+if [[ -f "$changelog_path" ]] && ! grep -qF "## [$expected_version]" "$changelog_path"; then
+  echo "warning: CHANGELOG.md does not contain a [${expected_version}] section" >&2
+  echo "Remember to promote [Unreleased] to [${expected_version}] before tagging." >&2
+else
+  echo "CHANGELOG version check: [${expected_version}] found"
+fi
+
 require_path "$source_root/ma/references/examples.md"
 require_path "$source_root/ma/references/growing.md"
 require_path "$source_root/ma/references/touch.md"
+require_path "$source_root/ma/references/optical.md"
 require_path "$source_root/ma-review/assets/report-template.md"
 require_path "$source_root/ma-review/references/review-rubric.md"
 
@@ -148,6 +159,7 @@ done
 require_path "$stage_root/skills/ma/references/examples.md"
 require_path "$stage_root/skills/ma/references/growing.md"
 require_path "$stage_root/skills/ma/references/touch.md"
+require_path "$stage_root/skills/ma/references/optical.md"
 require_path "$stage_root/skills/ma-review/assets/report-template.md"
 require_path "$stage_root/skills/ma-review/references/review-rubric.md"
 

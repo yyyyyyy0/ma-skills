@@ -8,6 +8,7 @@ description: >
   設計・実装の入口として使い、完成物の総合レビューには ma-review を使うこと。
   単一論点だけの相談、たとえば可読性・マッピング・フロー・削減・システム一貫性だけを
   点検したい場合には使わず、対応する ma-* サブスキルへ寄せること。
+  ただし optical correction など対応するサブスキルが存在しない論点は ma で扱うこと。
   コントラストと余白も装飾ではなく情報設計の一部として扱うこと。
 license: MIT
 metadata:
@@ -157,7 +158,10 @@ Meaning is designed before it is measured.
 - コンポーネントまたはセクションの局所調整（情報構造の再設計を含まない） → **Focused**
 - 単一要素の調整 → **Minimal**
 - 曖昧な場合は一段上の Tier を選ぶ
-- 単一論点（余白のみ、コントラストのみ等）は `ma-*` サブスキルでの監査も検討しつつ、`ma` で扱う場合は Minimal Tier で返す
+- 単一論点（余白のみ、コントラストのみ等）の場合、コンテキストで振り分ける:
+  - **設計・実装コンテキスト**（UIを作っている・組み立てている）→ `ma` で Minimal Tier として扱う
+  - **監査コンテキスト**（既存UIの確認・検証が目的）→ 対応する `ma-*` サブスキルへ渡す
+  - 対応するサブスキルが存在しない論点（optical correction 等）→ `ma` で扱う
 
 ### 全セクション一覧
 
@@ -183,6 +187,9 @@ Meaning is designed before it is measured.
 - contrast rationale
   - どのコントラスト帯を使うか
   - どの背景に対して検証するか
+- optical rationale（知覚補正が関わる場合）
+  - どの知覚現象が作用しているか（half-leading、geometric vs optical center、tracking 等）
+  - 補正方向と補正値の根拠
 - metrics や experiments を使うなら、何を意味判断で先に決め、何だけを測ったか
 - 必要なら次にどのサブスキルでレビューすべきか
 
