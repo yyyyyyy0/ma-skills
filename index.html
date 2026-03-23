@@ -136,7 +136,7 @@ body {
   line-height: 1.4;
 }
 
-.hdr-toggle__btn[aria-pressed="true"] {
+.hdr-toggle__btn[aria-checked="true"] {
   background: var(--color-bg);
   color: var(--color-text-primary);
 }
@@ -524,8 +524,8 @@ a:focus-visible, button:focus-visible {
 <header class="page-header">
   <button class="theme-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode">☀</button>
   <div class="hdr-toggle" role="radiogroup" aria-label="Language">
-    <button class="hdr-toggle__btn" role="radio" aria-pressed="true" data-lang-btn="ja">JA</button>
-    <button class="hdr-toggle__btn" role="radio" aria-pressed="false" data-lang-btn="en">EN</button>
+    <button class="hdr-toggle__btn" role="radio" aria-checked="true" data-lang-btn="ja">JA</button>
+    <button class="hdr-toggle__btn" role="radio" aria-checked="false" data-lang-btn="en">EN</button>
   </div>
 </header>
 
@@ -704,11 +704,16 @@ a:focus-visible, button:focus-visible {
   handle.addEventListener('keydown', function (e) {
     var current = parseFloat(comp.style.getPropertyValue('--pos')) || 50;
     var step = e.shiftKey ? 10 : 2;
+    var next;
     if (e.key === 'ArrowLeft' || e.key === 'Left') {
-      comp.style.setProperty('--pos', Math.max(0, current - step) + '%');
+      next = Math.max(0, current - step);
+      comp.style.setProperty('--pos', next + '%');
+      handle.setAttribute('aria-valuenow', Math.round(next));
       e.preventDefault();
     } else if (e.key === 'ArrowRight' || e.key === 'Right') {
-      comp.style.setProperty('--pos', Math.min(100, current + step) + '%');
+      next = Math.min(100, current + step);
+      comp.style.setProperty('--pos', next + '%');
+      handle.setAttribute('aria-valuenow', Math.round(next));
       e.preventDefault();
     }
   });
@@ -750,7 +755,7 @@ a:focus-visible, button:focus-visible {
     root.setAttribute('data-lang', lang);
     root.setAttribute('lang', lang === 'en' ? 'en' : 'ja');
     langBtns.forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
+      b.setAttribute('aria-checked', b.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
     });
     try { localStorage.setItem('ma-skills-lang', lang); } catch (e) {}
   }
