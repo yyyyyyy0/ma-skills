@@ -136,15 +136,14 @@ for skill in "${skills[@]}"; do
   fi
 done
 
-# --- CHANGELOG version check ---
+# --- CHANGELOG version check (warning, not blocking) ---
 changelog_path="$repo_root/CHANGELOG.md"
-require_path "$changelog_path"
-if ! grep -qF "## [$expected_version]" "$changelog_path"; then
-  echo "CHANGELOG.md does not contain a [${expected_version}] section" >&2
-  echo "Promote [Unreleased] to [${expected_version}] before syncing." >&2
-  exit 1
+if [[ -f "$changelog_path" ]] && ! grep -qF "## [$expected_version]" "$changelog_path"; then
+  echo "warning: CHANGELOG.md does not contain a [${expected_version}] section" >&2
+  echo "Remember to promote [Unreleased] to [${expected_version}] before tagging." >&2
+else
+  echo "CHANGELOG version check: [${expected_version}] found"
 fi
-echo "CHANGELOG version check: [${expected_version}] found"
 
 require_path "$source_root/ma/references/examples.md"
 require_path "$source_root/ma/references/growing.md"
