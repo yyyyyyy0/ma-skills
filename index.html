@@ -628,7 +628,7 @@ a:focus-visible, button:focus-visible {
       </div>
 
       <!-- With -->
-      <div class="comp-panel comp-panel--with" aria-hidden="true">
+      <div class="comp-panel comp-panel--with">
         <div class="demo-with">
           <h3><span class="t-ja">スキル</span><span class="t-en">Skills</span></h3>
           <dl>
@@ -733,10 +733,25 @@ a:focus-visible, button:focus-visible {
 
   copyBtn.addEventListener('click', function () {
     var text = cmdEl.textContent;
-    navigator.clipboard.writeText(text).then(function () {
+    function onSuccess() {
       copyBtn.textContent = 'Copied!';
       setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
-    });
+    }
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); onSuccess(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess, fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
   });
 
   /* ===== Shared ARIA labels ===== */
