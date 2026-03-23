@@ -547,18 +547,18 @@ a:focus-visible, button:focus-visible {
       <span class="t-en">← Drag to compare →</span>
     </p>
 
-    <div class="comparison" id="comparison" style="--pos: 50%;">
-      <span class="comp-label comp-label--without">
+    <div class="comparison" id="comparison" style="--pos: 50%;" role="img" aria-label="スキルリストの「間なし」と「間あり」の視覚比較。ドラッグで境界を移動できます。">
+      <span class="comp-label comp-label--without" aria-hidden="true">
         <span class="t-ja">間なし</span>
         <span class="t-en">Without</span>
       </span>
-      <span class="comp-label comp-label--with">
+      <span class="comp-label comp-label--with" aria-hidden="true">
         <span class="t-ja">間あり</span>
         <span class="t-en">With 間</span>
       </span>
 
       <!-- Without -->
-      <div class="comp-panel comp-panel--without">
+      <div class="comp-panel comp-panel--without" aria-hidden="true">
         <div class="demo-without">
           <div class="demo-wo-hero">
             <h3>🎨✨ ma-skills 🚀</h3>
@@ -620,7 +620,7 @@ a:focus-visible, button:focus-visible {
       </div>
 
       <!-- With -->
-      <div class="comp-panel comp-panel--with">
+      <div class="comp-panel comp-panel--with" aria-hidden="true">
         <div class="demo-with">
           <h3><span class="t-ja">スキル</span><span class="t-en">Skills</span></h3>
           <dl>
@@ -732,8 +732,8 @@ a:focus-visible, button:focus-visible {
 
   /* ===== Shared ARIA labels ===== */
   var ariaLabels = {
-    ja: { theme: { dark: 'ライトモードに切替', light: 'ダークモードに切替' }, lang: '言語切替', demo: '比較デモ', slider: '比較スライダー', install: 'インストール' },
-    en: { theme: { dark: 'Switch to light mode', light: 'Switch to dark mode' }, lang: 'Language', demo: 'Comparison demo', slider: 'Comparison slider', install: 'Install' }
+    ja: { theme: { dark: 'ライトモードに切替', light: 'ダークモードに切替' }, lang: '言語切替', demo: '比較デモ', slider: '比較スライダー', install: 'インストール', comparison: 'スキルリストの「間なし」と「間あり」の視覚比較。ドラッグで境界を移動できます。' },
+    en: { theme: { dark: 'Switch to light mode', light: 'Switch to dark mode' }, lang: 'Language', demo: 'Comparison demo', slider: 'Comparison slider', install: 'Install', comparison: 'Visual comparison of skill list with and without 間 principles. Drag to move the boundary.' }
   };
 
   /* ===== Theme Toggle ===== */
@@ -773,6 +773,7 @@ a:focus-visible, button:focus-visible {
     document.querySelector('.demo-section').setAttribute('aria-label', labels.demo);
     handle.setAttribute('aria-label', labels.slider);
     document.querySelector('.install-section').setAttribute('aria-label', labels.install);
+    comp.setAttribute('aria-label', labels.comparison);
     try { localStorage.setItem('ma-skills-lang', lang); } catch (e) {}
   }
 
