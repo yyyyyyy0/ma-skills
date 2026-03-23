@@ -734,18 +734,19 @@ a:focus-visible, button:focus-visible {
   var root = document.documentElement;
   var themeBtn = document.getElementById('theme-toggle');
 
-  function applyTheme(theme) {
+  function syncThemeUI(theme) {
     root.setAttribute('data-theme', theme);
     themeBtn.textContent = theme === 'dark' ? '☾' : '☀';
     themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-    try { localStorage.setItem('ma-skills-theme', theme); } catch (e) {}
   }
 
-  applyTheme(root.getAttribute('data-theme') || 'light');
+  // Sync UI on load without persisting system-derived value
+  syncThemeUI(root.getAttribute('data-theme') || 'light');
 
   themeBtn.addEventListener('click', function () {
-    var current = root.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    syncThemeUI(next);
+    try { localStorage.setItem('ma-skills-theme', next); } catch (e) {}
   });
 
   /* ===== Language Toggle ===== */
