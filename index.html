@@ -665,7 +665,7 @@ a:focus-visible, button:focus-visible {
       <span class="t-en">Install</span>
     </h2>
     <div class="install-wrapper">
-      <pre class="install-code"><code id="install-cmd">npx skills add yyyyyyy0/ma-skills -g --skill '*'</code></pre>
+      <pre class="install-code"><code id="install-cmd">npx skills add yyyyyyy0/ma-skills -g --skill "*"</code></pre>
       <button class="copy-btn" id="copy-btn" type="button">Copy</button>
     </div>
     <p class="install-note">
@@ -744,7 +744,7 @@ a:focus-visible, button:focus-visible {
       ta.style.opacity = '0';
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); onSuccess(); } catch (e) {}
+      try { if (document.execCommand('copy')) { onSuccess(); } } catch (e) {}
       document.body.removeChild(ta);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
