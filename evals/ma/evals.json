@@ -59,6 +59,15 @@
       "files": [
         "fixtures/ambiguous-card/fixture.md"
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "ページヘッダーのアイコン・見出し・ボタンが数値的には揃っているのに視覚的にずれて見えます。知覚補正の観点から原因を特定し、修正値とデザイン根拠を出してください。",
+      "expected_output": "知覚的ズレの原因を現象別（half-leading、geometric vs optical center、大見出しの tracking）に特定し、補正値を示すこと。デザイン根拠に optical rationale を含めること。 Checklist: 知覚現象の原因を名指しする / 補正値を具体的に示す / デザイン根拠に optical rationale セクションを含む / 「なんとなくずれて見える」で終わらない。",
+      "files": [
+        "fixtures/optical-correction/fixture.md",
+        "fixtures/optical-correction/notes.md"
+      ]
     }
   ]
 }
