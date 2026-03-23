@@ -136,7 +136,7 @@ body {
   line-height: 1.4;
 }
 
-.hdr-toggle__btn[aria-checked="true"] {
+.hdr-toggle__btn[aria-pressed="true"] {
   background: var(--color-bg);
   color: var(--color-text-primary);
 }
@@ -522,10 +522,10 @@ a:focus-visible, button:focus-visible {
 </a>
 
 <header class="page-header">
-  <button class="theme-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode">☀</button>
-  <div class="hdr-toggle" role="radiogroup" aria-label="Language">
-    <button class="hdr-toggle__btn" role="radio" aria-checked="true" data-lang-btn="ja">JA</button>
-    <button class="hdr-toggle__btn" role="radio" aria-checked="false" data-lang-btn="en">EN</button>
+  <button class="theme-btn" id="theme-toggle" type="button" aria-label="テーマ切替">☀</button>
+  <div class="hdr-toggle" aria-label="言語切替">
+    <button class="hdr-toggle__btn" aria-pressed="true" data-lang-btn="ja">JA</button>
+    <button class="hdr-toggle__btn" aria-pressed="false" data-lang-btn="en">EN</button>
   </div>
 </header>
 
@@ -541,7 +541,7 @@ a:focus-visible, button:focus-visible {
   </p>
 
   <!-- Comparison demo -->
-  <section class="demo-section" aria-label="Comparison demo">
+  <section class="demo-section" aria-label="比較デモ">
     <p class="demo-label">
       <span class="t-ja">← ドラッグして比較 →</span>
       <span class="t-en">← Drag to compare →</span>
@@ -645,12 +645,12 @@ a:focus-visible, button:focus-visible {
       <!-- Handle -->
       <div class="handle" id="handle" role="slider" tabindex="0"
            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-           aria-label="Comparison slider"></div>
+           aria-label="比較スライダー"></div>
     </div>
   </section>
 
   <!-- Install -->
-  <section class="install-section" aria-label="Install">
+  <section class="install-section" aria-label="インストール">
     <h2 class="section-heading">
       <span class="t-ja">インストール</span>
       <span class="t-en">Install</span>
@@ -730,6 +730,12 @@ a:focus-visible, button:focus-visible {
     });
   });
 
+  /* ===== Shared ARIA labels ===== */
+  var ariaLabels = {
+    ja: { theme: { dark: 'ライトモードに切替', light: 'ダークモードに切替' }, lang: '言語切替', demo: '比較デモ', slider: '比較スライダー', install: 'インストール' },
+    en: { theme: { dark: 'Switch to light mode', light: 'Switch to dark mode' }, lang: 'Language', demo: 'Comparison demo', slider: 'Comparison slider', install: 'Install' }
+  };
+
   /* ===== Theme Toggle ===== */
   var root = document.documentElement;
   var themeBtn = document.getElementById('theme-toggle');
@@ -737,7 +743,9 @@ a:focus-visible, button:focus-visible {
   function syncThemeUI(theme) {
     root.setAttribute('data-theme', theme);
     themeBtn.textContent = theme === 'dark' ? '☾' : '☀';
-    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    var lang = root.getAttribute('data-lang') || 'ja';
+    var labels = ariaLabels[lang] || ariaLabels.ja;
+    themeBtn.setAttribute('aria-label', labels.theme[theme] || labels.theme.light);
   }
 
   // Sync UI on load without persisting system-derived value
@@ -756,8 +764,15 @@ a:focus-visible, button:focus-visible {
     root.setAttribute('data-lang', lang);
     root.setAttribute('lang', lang === 'en' ? 'en' : 'ja');
     langBtns.forEach(function (b) {
-      b.setAttribute('aria-checked', b.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
     });
+    var labels = ariaLabels[lang] || ariaLabels.ja;
+    var currentTheme = root.getAttribute('data-theme') || 'light';
+    themeBtn.setAttribute('aria-label', labels.theme[currentTheme] || labels.theme.light);
+    document.querySelector('.hdr-toggle').setAttribute('aria-label', labels.lang);
+    document.querySelector('.demo-section').setAttribute('aria-label', labels.demo);
+    handle.setAttribute('aria-label', labels.slider);
+    document.querySelector('.install-section').setAttribute('aria-label', labels.install);
     try { localStorage.setItem('ma-skills-lang', lang); } catch (e) {}
   }
 
