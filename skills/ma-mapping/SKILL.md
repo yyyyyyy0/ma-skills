@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - mapping
     - action-scope
@@ -62,6 +62,9 @@ metadata:
 
 1. 各インタラクティブ要素に「これは何に作用するか」と問う
 2. 位置と囲みだけで答えられるか確認する
+   URL がある場合: `ma/references/visual.md` の PROC:ENTRY を実行し、
+   囲みとグループの視覚的帰属をスクリーンショットで確認する。
+   URL がない場合はコードから推測し、「視覚検証スキップ — ライブ URL なし」と記録する。
 3. 足りなければ、ラベルの具体性を点検する
 4. 単一対象、複数対象、一括対象を分けて評価する
 

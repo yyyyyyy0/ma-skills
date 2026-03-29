@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - ui-review
     - audit
@@ -37,6 +37,10 @@ metadata:
 
 ## Workflow
 
+0. 視覚基準を確立する
+   URL または localhost アドレスが提供されている場合: `ma/references/visual.md` の PROC:ENTRY を実行する。
+   スクリーンショットと観測メモは監査の証拠として各サブスキルの所見と照合する。
+   URL が提供されていない場合は「視覚検証スキップ — ライブ URL なし」と記録して Step 1 へ進む。
 1. `ma-system` を実行する
 2. `ma-legibility` を実行する
 3. `ma-mapping` を実行する
@@ -53,6 +57,8 @@ metadata:
 - 所見は必ず、どの原則に違反しているかを書く
 - Priority actions は、抽象論ではなく実行可能な修正案にする
 - 測定や実験が意味判断の代替として使われていないかを確認し、使われている場合は既存5軸の違反として記録する
+- 視覚検証を実行した場合、所見はスクリーンショットの観測に根拠を持たせること
+- 「コードから推測される問題」と「画面で確認された問題」は区別して記録すること
 
 ## Protocol
 

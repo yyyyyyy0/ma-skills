@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - ui-flow
     - reading-order
@@ -67,9 +67,15 @@ metadata:
 
 1. 最初に目が行く要素を特定する
 2. 自然な読み経路をトレースする
-3. ユーザーが理解すべき論理順序を並べる
-4. 視覚順序と論理順序のズレを洗い出す
-5. 余白・ウェイト・位置・サイズで修正案を出す
+3. 視覚的な読み経路を実際のレンダリングで確認する
+   URL がある場合: `ma/references/visual.md` の PROC:FOLD を実行する。
+   - viewport screenshot で最初の焦点を記録する
+   - full-page screenshot でスクロール深度と CTA 埋もれを確認する
+   - 視覚的順序と Step 2 でトレースした経路との差分を記録する
+   URL がない場合はこのステップをスキップし、「視覚検証スキップ — ライブ URL なし」と記録する。
+4. ユーザーが理解すべき論理順序を並べる
+5. 視覚順序と論理順序のズレを洗い出す
+6. 余白・ウェイト・位置・サイズで修正案を出す
 
 ## Constraints
 

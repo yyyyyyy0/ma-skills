@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - accessibility
     - readability
@@ -67,6 +67,11 @@ metadata:
 1. すべての文字列を初見のつもりで読む
 2. 文脈依存の文言に印を付ける
 3. コントラスト不足と focus 不可視を確認する
+   URL がある場合: `ma/references/visual.md` の PROC:STATES を実行する。
+   - 各インタラクティブ要素の focus 状態をスクリーンショットで記録する
+   - disabled / error 状態の要素があればスクリーンショットを取得する
+   - viewport screenshot で上位テキストのコントラストを観測する
+   URL がない場合はコードから推測し、「視覚検証スキップ — ライブ URL なし」と記録する。
 4. エラー、空、ローディングの文言具体性を点検する
 5. キーボードだけで操作して破綻点を探す
 

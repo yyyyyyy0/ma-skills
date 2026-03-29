@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - design-system
     - consistency
@@ -62,6 +62,9 @@ metadata:
 
 1. 既存 UI から暗黙の正規値を抽出する
 2. 逸脱点を見つける
+   URL がある場合: `ma/references/visual.md` の PROC:RESPONSIVE を実行し、
+   breakpoint ごとの spacing scale と token 逸脱をスクリーンショットで確認する。
+   URL がない場合はコードから推測し、「視覚検証スキップ — ライブ URL なし」と記録する。
 3. 新しい値を増やさず、既存正規値へ統合する
 4. 状態表現と semantic role の対応を確認する
 
