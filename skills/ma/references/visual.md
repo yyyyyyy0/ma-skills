@@ -67,9 +67,10 @@ focus、hover、error、disabled など、静的コードからは見えない�
 
 1. `browser_navigate` で対象 URL へ遷移する
 2. 監査対象のインタラクティブ要素ごとに:
-   a. `browser_click` で要素をアクティブにする
-   b. `browser_screenshot` で状態を撮影する
-   c. 対象要素名と確認した状態を記録する
+   a. `browser_click` で要素をアクティブにし、`browser_screenshot` で状態を撮影する
+   b. キーボードフォーカスの確認: Tab キーで要素へ移動し、`browser_screenshot` で `:focus-visible` の状態を撮影する。
+      ポインタクリックでは `:focus-visible` が発火しないブラウザがあるため、キーボード操作での確認が必要。
+   c. 対象要素名と確認した状態（click / focus-visible / hover）を記録する
 3. error 状態がある場合はフォームに不正値を入力して `browser_screenshot` する
 4. 観測メモを記録する
 5. `browser_close_session` でセッションを閉じる
