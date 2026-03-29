@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - ui-design
     - implementation
@@ -71,6 +71,10 @@ UIデザインの根拠となる2つの原則は、情報の明瞭性と目的�
    - 状態管理の方針（どの状態をどこで持つか）
    - スタイリングの方針（トークン利用、レスポンシブ戦略）
    - 段階的開示の実装手段（条件付きレンダリング、タブ、アコーディオン等）
+   - 視覚検証が可能な場合（URL が提供されている場合）:
+     `references/visual.md` の PROC:ENTRY を実行し、
+     above-fold の状態と CTA 到達性を実装方針の根拠として記録する。
+     URL がない場合は「視覚検証スキップ — ライブ URL なし」と明記する。
 6. 完成物レビューが必要なら `ma-review` に渡す
 
 詳細ルール:

@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: yyyyyyy0
-  version: 1.2.0
+  version: 1.3.0
   tags:
     - simplification
     - declutter
@@ -64,6 +64,9 @@ metadata:
 ## Process
 
 1. 各要素について「消すと何を失うか」を問う
+   URL がある場合: `ma/references/visual.md` の PROC:FOLD を実行し、
+   below-fold に押し込まれた項目と初期表示の情報密度を記録する。
+   URL がない場合はコードから推測し、「視覚検証スキップ — ライブ URL なし」と記録する。
 2. 失うものがない、または遅らせられるなら削除または延期する
 3. 必要な複雑さと偶発的な複雑さを分ける
 4. 最後に、本質がまだ十分見えているか確認する

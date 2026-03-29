@@ -6,6 +6,24 @@ The format is based on Keep a Changelog, and versions are intended to map to Git
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-03-29
+
+### Added
+
+- Visual Verification Protocol (`references/visual.md`): browser-use MCP によるライブブラウザ視覚検証の共有手順（PROC:ENTRY / PROC:FOLD / PROC:RESPONSIVE / PROC:STATES）。
+- `ma-review` Workflow Step 0: 5軸監査の前に PROC:ENTRY で視覚基準を確立する。
+- `ma-review` レポートテンプレートに Visual Reference セクションを追加。
+- `ma-flow` Process Step 3: PROC:FOLD による視覚的読み経路の確認。
+- `ma-legibility` Process Step 3: PROC:STATES による focus / contrast / error 状態の視覚検証。
+- `ma` Workflow Step 5: PROC:ENTRY による実装方針の視覚的根拠確保。
+- `ma-mapping` Process Step 2: PROC:ENTRY による囲みとグループの視覚的帰属確認。
+- `ma-system` Process Step 2: PROC:RESPONSIVE による breakpoint 間の token 逸脱確認。
+- `ma-reduction` Process Step 1: PROC:FOLD による below-fold 情報密度の確認。
+
+### Changed
+
+- `ma-review` 実行ルール: 「コードから推測される問題」と「画面で確認された問題」の区別を必須化。
+
 ## [1.2.0] - 2026-03-23
 
 ### Added

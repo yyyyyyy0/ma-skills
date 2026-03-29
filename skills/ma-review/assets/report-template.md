@@ -1,5 +1,11 @@
 # ma-review — [コンポーネントまたは画面名]
 
+## Visual Reference
+
+[ma-review Step 0 PROC:ENTRY の観測メモ。
+各軸のサブスキルが実行した追加の PROC（PROC:FOLD, PROC:STATES 等）は各軸の所見内にインライン記録する。
+URL なしの場合は「視覚検証スキップ — ライブ URL なし」と記録する。]
+
 ---
 
 ## 1. System (ma-system)
